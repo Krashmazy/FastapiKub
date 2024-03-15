@@ -1,9 +1,3 @@
-#!/bin/bash
-#arret si error
-#set -e
-
-bash destroy.sh
-
 # secrets
 echo "Déploiement Secrets"
 kubectl apply -f ./YAML-STANDARD/k3s/postgres/secret.yaml
@@ -12,6 +6,7 @@ kubectl apply -f ./YAML-STANDARD/k3s/postgres/secret.yaml
 echo "Déploiement bases de données"
 kubectl apply -f ./YAML-STANDARD/k3s/postgres/service.yaml
 kubectl apply -f ./YAML-STANDARD/k3s/postgres/deployment.yaml
+kubectl apply -f ./YAML-STANDARD/k3s/postgres/pvc.yaml
 
 # application
 echo "Déploiement applications"
