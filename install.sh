@@ -1,3 +1,7 @@
+# Namespace
+echo "Déploiement des Namespaces"
+kubectl apply -f ./namespace.yaml
+
 # secrets
 echo "Déploiement Secrets"
 kubectl apply -f ./YAML-STANDARD/k3s/postgres/secret.yaml
