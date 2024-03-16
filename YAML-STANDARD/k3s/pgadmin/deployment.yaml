@@ -20,10 +20,10 @@ spec:
             - name: PGADMIN_DEFAULT_EMAIL
               valueFrom:
                 secretKeyRef:
-                  name: secret-pgadmin.yaml
+                  name: pgadmin-secret
                   key: PGADMIN_DEFAULT_EMAIL
             - name: PGADMIN_DEFAULT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: secret-pgadmin.yaml
+                  name: pgadmin-secret
                   key: PGADMIN_DEFAULT_PASSWORD

@@ -13,10 +13,14 @@ kubectl apply -f ./YAML-STANDARD/k3s/postgres/deployment.yaml
 echo "Déploiement applications"
 kubectl apply -f ./YAML-STANDARD/k3s/fastapi/service.yaml
 kubectl apply -f ./YAML-STANDARD/k3s/fastapi/deployment.yaml
-#kubectl apply -f ./YAML-STANDARD/k3s/fastapi/ingress.yaml
+kubectl apply -f ./YAML-STANDARD/k3s/ingress.yaml
 
 # PGAdmin
 echo "Déploiement PGAdmin"
 kubectl apply -f ./YAML-STANDARD/k3s/pgadmin/service.yaml
 kubectl apply -f ./YAML-STANDARD/k3s/pgadmin/deployment.yaml
-#kubectl apply -f ./YAML-STANDARD/k3s/pgadmin/ingress.yaml
+
+# Ingress
+echo "Déploiement Ingress et HPA"
+kubectl apply -f ./YAML-STANDARD/k3s/ingress.yaml
+kubectl apply -f ./YAML-STANDARD/k3s/fastapi/hpa.yaml
