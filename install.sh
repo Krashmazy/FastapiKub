@@ -1,6 +1,7 @@
 # secrets
 echo "Déploiement Secrets"
 kubectl apply -f ./YAML-STANDARD/k3s/postgres/secret.yaml
+kubectl apply -f ./YAML-STANDARD/k3s/pgadmin/secret-pgadmin.yaml
 
 # base de donnée
 echo "Déploiement bases de données"

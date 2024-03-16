@@ -16,3 +16,14 @@ spec:
           image: dpage/pgadmin4
           ports:
             - containerPort: 80
+          env:
+            - name: PGADMIN_DEFAULT_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: secret-pgadmin.yaml
+                  key: PGADMIN_DEFAULT_EMAIL
+            - name: PGADMIN_DEFAULT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret-pgadmin.yaml
+                  key: PGADMIN_DEFAULT_PASSWORD
