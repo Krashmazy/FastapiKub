@@ -2,19 +2,10 @@ host: "helm.alexisber.cloudns.be"
 email: "bernealexis@gmail.com"
 namespace: "helm"
 
-secrets:
-  postgres:
-    password:
-    User:
-    database:
-  pgadmin:
-    password:
-    email:
-
 fastapi:
   deploymentName: "fastapi-deployment"
   serviceName: "fastapi-service"
-  image: ""
+  image: "alexb00/app_fastapi:latest"
   cpuRequest: "50m"
   cpuLimit: "200m"
   replicas: 3
@@ -42,14 +33,19 @@ pgadmin:
   containerName: "pgadmin"
 
 postgres:
-  statefulsetName: "postgres-statefulset"
+  deploymentName: "postgres"
   serviceName: "db"
   replicas: 1
   storageSize: "10Gi"
   storagePath: "/mnt/data/helm"
   image: "postgres:latest"
   appLabel: "postgres"
-  matchLabels: "postgres"
+  user: "yourPostgresUser"
+  db: "yourPostgresDB"
+  secretName: "postgres-secret"
+  matchLabels:
+    app: "postgres"
   templateLabel: "postgres"
   containerName: "postgres"
   containerPort: 5432
+  pvcName: "postgres-pvc"

@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pgadmin
-  namespace: standard
+  name: {{ .Values.pgadmin.deploymentName }}
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     matchLabels:
-      app: pgadmin
+      app: {{ .Values.pgadmin.appLabel }}
   template:
     metadata:
       labels:
-        app: pgadmin
+        app: {{ .Values.pgadmin.templateLabel }}
     spec:
       containers:
-        - name: pgadmin
-          image: dpage/pgadmin4
+        - name: {{ .Values.pgadmin.containerName }}
+          image: {{ .Values.pgadmin.image }}
           ports:
-            - containerPort: 80
+            - containerPort: {{ .Values.pgadmin.containerPort }}
           env:
             - name: PGADMIN_DEFAULT_EMAIL
               valueFrom:

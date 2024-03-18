@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fastapi.deploymentName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.fastapi.replicas }}
+  selector:
+    matchLabels:
+      {{- toYaml .Values.fastapi.matchLabels | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- toYaml .Values.fastapi.templateLabel | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Values.fastapi.containerName }}
+          image: "{{ .Values.fastapi.image }}"
+          resources:
+            requests:
+              cpu: "{{ .Values.fastapi.cpuRequest }}"
+            limits:
+              cpu: "{{ .Values.fastapi.cpuLimit }}"
+          ports:
+            - containerPort: {{ .Values.fastapi.containerPort }}

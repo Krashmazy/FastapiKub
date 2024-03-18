@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
-  namespace: standard
+  name: {{ .Values.postgres.statefulsetName }}
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     matchLabels:
-      app: postgres
+      app: {{ .Values.postgres.appLabel }}
   template:
     metadata:
       labels:
-        app: postgres
+        app: {{ .Values.postgres.templateLabel }}
     spec:
       containers:
-        - name: postgres
-          image: postgres:latest
+        - name: {{ .Values.postgres.containerName }}
+          image: {{ .Values.postgres.image }}
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
@@ -22,17 +22,11 @@ spec:
                   name: postgres-secret
                   key: password
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: user
+              value: "{{ .Values.postgres.user }}"
             - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: database
+              value: "{{ .Values.postgres.db }}"
           ports:
-            - containerPort: 5432
+            - containerPort: {{ .Values.postgres.containerPort }}
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
