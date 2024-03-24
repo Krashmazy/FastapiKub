@@ -15,11 +15,15 @@ fastapi:
   templateLabel: "fastapi"
   containerName: "fastapi"
   containerPort: 80
+  hpa:
+    name: "fastapi-hpa"
+    minReplicas: 3
+    maxReplicas: 6
+    targetCPUUtilizationPercentage: 70
 
-hpa:
-  minReplicas: 3
-  maxReplicas: 6
-  targetCPUUtilizationPercentage: 70
+service:
+  type: ClusterIP
+  port: 80
 
 pgadmin:
   deploymentName: "pgadmin-deployment"
@@ -31,6 +35,10 @@ pgadmin:
   matchLabels: "pgadmin"
   templateLabel: "pgadmin"
   containerName: "pgadmin"
+  secret:
+    email: "admin@admin.com"
+    password: "root"
+    user: "YWRtaW4="
 
 postgres:
   deploymentName: "postgres"
@@ -49,3 +57,13 @@ postgres:
   containerName: "postgres"
   containerPort: 5432
   pvcName: "postgres-pvc"
+  secret:
+    password: "cGFzc3dvcmQ="
+    user: "YWRtaW4="
+    db: "c3RvcmVkYg=="
+
+ingress:
+    enabled: true
+    ingressName: "helm-ingress"
+    ingressPath: "/"
+    ingressServiceName: "helm"

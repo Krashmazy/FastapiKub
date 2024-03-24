@@ -1,8 +1,12 @@
 # Patterns to ignore when building packages.
 # This supports shell glob matching, relative path matching, and
 # negation (prefixed with !). Only one pattern per line.
+
+# System Files
 .DS_Store
-# Common VCS dirs
+Thumbs.db
+
+# Version Control System directories
 .git/
 .gitignore
 .bzr/
@@ -10,14 +14,48 @@
 .hg/
 .hgignore
 .svn/
-# Common backup files
+
+# Backup files
 *.swp
 *.bak
 *.tmp
 *.orig
 *~
-# Various IDEs
+
+# IDE files
 .project
 .idea/
 *.tmproj
 .vscode/
+*.iml
+
+# JetBrains specific directories
+.idea/
+
+# OS specific
+__MACOSX/
+*.lock
+
+# Log files
+*.log
+
+# Node Modules
+node_modules/
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk

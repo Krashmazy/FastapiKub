@@ -23,3 +23,6 @@ echo "installing k3s"
 echo -e "\n==============================================================================\n"
 curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+mkdir -p $HOME/.kube
+sudo cp /etc/rancher/k3s/k3s.yaml $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
