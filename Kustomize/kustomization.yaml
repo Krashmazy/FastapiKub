@@ -1,0 +1,9 @@
+namespace: kustomize
+
+resources:
+  - fastapi/deployment.yaml
+  - fastapi/service.yaml
+  - fastapi/hpa.yaml
+  - pgadmin/deployment.yaml
+  - pgadmin/secret.yaml
+  - ingress.yaml

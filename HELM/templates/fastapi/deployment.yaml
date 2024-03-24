@@ -7,11 +7,11 @@ spec:
   replicas: {{ .Values.fastapi.replicas }}
   selector:
     matchLabels:
-      {{- toYaml .Values.fastapi.matchLabels | nindent 6 }}
+        app: {{ .Values.fastapi.matchLabels }}
   template:
     metadata:
       labels:
-        {{- toYaml .Values.fastapi.templateLabel | nindent 8 }}
+        app: {{ .Values.fastapi.templateLabel }}
     spec:
       containers:
         - name: {{ .Values.fastapi.containerName }}
