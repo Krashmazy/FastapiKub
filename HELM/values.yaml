@@ -48,8 +48,6 @@ postgres:
   storagePath: "/mnt/data/helm"
   image: "postgres:latest"
   appLabel: "postgres"
-  user: "yourPostgresUser"
-  db: "yourPostgresDB"
   secretName: "postgres-secret"
   matchLabels:
     app: "postgres"

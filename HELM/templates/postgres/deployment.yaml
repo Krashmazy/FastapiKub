@@ -22,9 +22,15 @@ spec:
                   name: postgres-secret
                   key: password
             - name: POSTGRES_USER
-              value: "{{ .Values.postgres.user }}"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: user
             - name: POSTGRES_DB
-              value: "{{ .Values.postgres.db }}"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: db
           ports:
             - containerPort: {{ .Values.postgres.containerPort }}
           volumeMounts:
