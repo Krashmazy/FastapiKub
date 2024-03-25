@@ -36,8 +36,8 @@ pgadmin:
   templateLabel: "pgadmin"
   containerName: "pgadmin"
   secret:
-    email: "admin@admin.com"
-    password: "root"
+    email: "YWRtaW5AYWRtaW4uY29tCg==" #admin@admin.com
+    password: "cm9vdAo=" #root
     user: "YWRtaW4="
 
 postgres:
