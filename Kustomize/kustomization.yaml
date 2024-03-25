@@ -1,9 +1,14 @@
 namespace: kustomize
 
 resources:
+  - postgres/deployment.yaml
+  - postgres/service.yaml
+  - postgres/pvc.yaml
+  - postgres/secret.yaml
   - fastapi/deployment.yaml
   - fastapi/service.yaml
   - fastapi/hpa.yaml
   - pgadmin/deployment.yaml
+  - pgadmin/service.yaml
   - pgadmin/secret.yaml
   - ingress.yaml

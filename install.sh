@@ -28,3 +28,11 @@ kubectl apply -f ./YAML-STANDARD/k3s/pgadmin/deployment.yaml
 echo "Déploiement Ingress et HPA"
 kubectl apply -f ./YAML-STANDARD/k3s/ingress.yaml
 kubectl apply -f ./YAML-STANDARD/k3s/fastapi/hpa.yaml
+
+# HELM
+echo "Déploiement HELM"
+helm install helm-chart ./HELM --values=./HELM/values.yaml
+
+# Kustomize
+echo "Déploiement Kustomize"
+kubectl apply -k Kustomize

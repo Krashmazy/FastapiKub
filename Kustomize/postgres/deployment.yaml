@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
-  namespace: standard
+  namespace: kustomize
 spec:
   selector:
     matchLabels:
@@ -30,7 +30,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
-                  key: database
+                  key: db
           ports:
             - containerPort: 5432
           volumeMounts:
