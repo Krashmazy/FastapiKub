@@ -1,0 +1,20 @@
+Name:             ingress
+Labels:           app.kubernetes.io/managed-by=Helm
+Namespace:        helm
+Address:          172.31.14.167
+Ingress Class:    traefik
+Default backend:  <default>
+TLS:
+  rancher-secret terminates alex-is-testing.com
+Rules:
+  Host                 Path  Backends
+  ----                 ----  --------
+  alex-is-testing.com  
+                       /   fastapi-service:80 (10.42.0.20:80,10.42.0.22:80,10.42.0.24:80)
+Annotations:           cert-manager.io/cluster-issuer: letsencrypt-prod
+                       meta.helm.sh/release-name: helm-chart
+                       meta.helm.sh/release-namespace: default
+Events:
+  Type    Reason             Age   From                       Message
+  ----    ------             ----  ----                       -------
+  Normal  CreateCertificate  49m   cert-manager-ingress-shim  Successfully created Certificate "rancher-secret"

@@ -1,0 +1,72 @@
+Name:                   fastapi
+Namespace:              kustomize
+CreationTimestamp:      Tue, 02 Apr 2024 23:55:04 +0000
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=fastapi
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=fastapi
+  Containers:
+   fastapi:
+    Image:      alexb00/app_fastapi:latest
+    Port:       80/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:  200m
+    Requests:
+      cpu:        50m
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   fastapi-76899c6b4b (3/3 replicas created)
+Events:
+  Type    Reason             Age                From                   Message
+  ----    ------             ----               ----                   -------
+  Normal  ScalingReplicaSet  48m                deployment-controller  Scaled up replica set fastapi-76899c6b4b to 1
+  Normal  ScalingReplicaSet  46m                deployment-controller  Scaled down replica set fastapi-76899c6b4b to 1 from 3
+  Normal  ScalingReplicaSet  46m (x2 over 48m)  deployment-controller  Scaled up replica set fastapi-76899c6b4b to 3 from 1
+
+
+Name:                   pgadmin
+Namespace:              kustomize
+CreationTimestamp:      Tue, 02 Apr 2024 23:55:04 +0000
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=pgadmin
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=pgadmin
+  Containers:
+   pgadmin:
+    Image:      dpage/pgadmin4
+    Port:       80/TCP
+    Host Port:  0/TCP
+    Environment:
+      PGADMIN_DEFAULT_EMAIL:     <set to the key 'PGADMIN_DEFAULT_EMAIL' in secret 'pgadmin-secret'>     Optional: false
+      PGADMIN_DEFAULT_PASSWORD:  <set to the key 'PGADMIN_DEFAULT_PASSWORD' in secret 'pgadmin-secret'>  Optional: false
+    Mounts:                      <none>
+  Volumes:                       <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   pgadmin-65bbc9cf75 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  48m   deployment-controller  Scaled up replica set pgadmin-65bbc9cf75 to 1

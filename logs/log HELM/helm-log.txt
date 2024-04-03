@@ -1,7 +1,0 @@
-Release "helm-chart" has been upgraded. Happy Helming!
-NAME: helm-chart
-LAST DEPLOYED: Sun Mar 24 19:10:54 2024
-NAMESPACE: default
-STATUS: deployed
-REVISION: 6
-TEST SUITE: None

@@ -11,7 +11,7 @@ kubectl apply -f ./YAML-STANDARD/k3s/pgadmin/secret-pgadmin.yaml
 echo "Déploiement bases de données"
 kubectl apply -f ./YAML-STANDARD/k3s/postgres/pvc.yaml
 kubectl apply -f ./YAML-STANDARD/k3s/postgres/service.yaml
-kubectl apply -f ./YAML-STANDARD/k3s/postgres/deployment.yaml
+kubectl apply -f ./YAML-STANDARD/k3s/postgres/statefulset.yaml
 
 # application
 echo "Déploiement applications"

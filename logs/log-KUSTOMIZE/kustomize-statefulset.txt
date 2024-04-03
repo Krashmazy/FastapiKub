@@ -1,0 +1,36 @@
+Name:               postgres
+Namespace:          kustomize
+CreationTimestamp:  Tue, 02 Apr 2024 23:55:04 +0000
+Selector:           app=postgres
+Labels:             <none>
+Annotations:        <none>
+Replicas:           1 desired | 1 total
+Update Strategy:    RollingUpdate
+  Partition:        0
+Pods Status:        1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=postgres
+  Containers:
+   postgres:
+    Image:      postgres:latest
+    Port:       5432/TCP
+    Host Port:  0/TCP
+    Environment:
+      POSTGRES_PASSWORD:  <set to the key 'password' in secret 'postgres-secret'>  Optional: false
+      POSTGRES_USER:      <set to the key 'user' in secret 'postgres-secret'>      Optional: false
+      POSTGRES_DB:        <set to the key 'db' in secret 'postgres-secret'>        Optional: false
+    Mounts:
+      /var/lib/postgresql/data from postgres-storage (rw)
+  Volumes:  <none>
+Volume Claims:
+  Name:          postgres-storage
+  StorageClass:  
+  Labels:        <none>
+  Annotations:   <none>
+  Capacity:      10Gi
+  Access Modes:  [ReadWriteOnce]
+Events:
+  Type    Reason            Age   From                    Message
+  ----    ------            ----  ----                    -------
+  Normal  SuccessfulCreate  48m   statefulset-controller  create Claim postgres-storage-postgres-0 Pod postgres-0 in StatefulSet postgres success
+  Normal  SuccessfulCreate  48m   statefulset-controller  create Pod postgres-0 in StatefulSet postgres successful

@@ -41,7 +41,7 @@ pgadmin:
     user: "YWRtaW4="
 
 postgres:
-  deploymentName: "postgres"
+  statefulsetName: "postgres-statefulset"
   serviceName: "db"
   replicas: 1
   storageSize: "10Gi"
@@ -61,7 +61,7 @@ postgres:
     db: "c3RvcmVkYg=="
 
 ingress:
-    enabled: true
     ingressName: "helm-ingress"
+    enabled: true
     ingressPath: "/"
     ingressServiceName: "helm"

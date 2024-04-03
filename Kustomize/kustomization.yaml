@@ -1,7 +1,7 @@
 namespace: kustomize
 
 resources:
-  - postgres/deployment.yaml
+  - postgres/Statefulset.yaml
   - postgres/service.yaml
   - postgres/pvc.yaml
   - postgres/secret.yaml

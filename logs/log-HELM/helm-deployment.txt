@@ -1,0 +1,74 @@
+Name:                   fastapi-deployment
+Namespace:              helm
+CreationTimestamp:      Tue, 02 Apr 2024 23:54:59 +0000
+Labels:                 app.kubernetes.io/managed-by=Helm
+Annotations:            deployment.kubernetes.io/revision: 1
+                        meta.helm.sh/release-name: helm-chart
+                        meta.helm.sh/release-namespace: default
+Selector:               app=fastapi
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=fastapi
+  Containers:
+   fastapi:
+    Image:      alexb00/app_fastapi:latest
+    Port:       80/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:  200m
+    Requests:
+      cpu:        50m
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   fastapi-deployment-76899c6b4b (3/3 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  49m   deployment-controller  Scaled up replica set fastapi-deployment-76899c6b4b to 3
+
+
+Name:                   pgadmin-deployment
+Namespace:              helm
+CreationTimestamp:      Tue, 02 Apr 2024 23:54:59 +0000
+Labels:                 app.kubernetes.io/managed-by=Helm
+Annotations:            deployment.kubernetes.io/revision: 1
+                        meta.helm.sh/release-name: helm-chart
+                        meta.helm.sh/release-namespace: default
+Selector:               app=pgadmin
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=pgadmin
+  Containers:
+   pgadmin:
+    Image:      dpage/pgadmin4
+    Port:       80/TCP
+    Host Port:  0/TCP
+    Environment:
+      PGADMIN_DEFAULT_EMAIL:     <set to the key 'PGADMIN_DEFAULT_EMAIL' in secret 'pgadmin-secret'>     Optional: false
+      PGADMIN_DEFAULT_PASSWORD:  <set to the key 'PGADMIN_DEFAULT_PASSWORD' in secret 'pgadmin-secret'>  Optional: false
+    Mounts:                      <none>
+  Volumes:                       <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   pgadmin-deployment-65bbc9cf75 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  49m   deployment-controller  Scaled up replica set pgadmin-deployment-65bbc9cf75 to 1

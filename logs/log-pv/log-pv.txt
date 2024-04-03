@@ -1,0 +1,4 @@
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                          STORAGECLASS   REASON   AGE
+pvc-12540f32-6565-4fee-a40d-67d91ae4c146   10Gi       RWO            Delete           Bound    standard/postgres-storage-postgres-0           local-path              49m
+pvc-d0abdc29-0ddf-40c8-926f-395d9f9cb86f   10Gi       RWO            Delete           Bound    kustomize/postgres-storage-postgres-0          local-path              48m
+pvc-d0c5ec33-7aac-4356-b95b-664d36627610   10Gi       RWO            Delete           Bound    helm/postgres-storage-postgres-statefulset-0   local-path              48m
