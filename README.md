@@ -1,4 +1,3 @@
-# Projet_kub1
 
 ## Installation
  * utilisation :
